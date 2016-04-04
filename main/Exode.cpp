@@ -13,8 +13,6 @@ void callback_listen(){ _exode.listen(); }
 
 Exode::Exode(){
 
-  Serial.print("run");
-
   inst_len = 0;
   cursor_input = 0;
 
