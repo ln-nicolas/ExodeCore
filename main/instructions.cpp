@@ -1,6 +1,9 @@
 #include "instructions.h"
 #include "Exode.h"
 
+// Watchdog to reset
+#include <avr/wdt.h>
+
 // o <-> operande
 
 void _pinMode(byte o[]){
@@ -141,6 +144,11 @@ void _deleteThread(byte o[]){
   _exode.deleteThread(ID);
 }
 
+void _resetBoard(byte o[]){
+  wdt_enable(WDTO_15MS);
+  while(1);
+}
+
 void (*_FUNCTIONS[])(byte o[]) = {
   &_pinMode,          // 0
   
@@ -160,6 +168,8 @@ void (*_FUNCTIONS[])(byte o[]) = {
   
   &_executeThread,   // 11
   &_initThread,      // 12
-  &_deleteThread     // 13
+  &_deleteThread,    // 13
+
+  &_resetBoard       // 14
 };
 
