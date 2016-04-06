@@ -8,11 +8,10 @@ int _pinMod[NB_PIN];
 int _digLvl[NB_PIN];
 double _anaVal[NB_PIN];
 
-// Callbacking functions to multithreading
-void callback_listen(){ _exode.listen(); }
+// Callbacking function for multithreading
+void callback_listen(){  _exode.listen(); }
 
-Exode::Exode(){
-
+Exode::Exode(){  
   inst_len = 0;
   cursor_input = 0;
 
@@ -20,8 +19,9 @@ Exode::Exode(){
   controller = new ThreadController();
   listener = new Thread();
   listener->onRun(callback_listen);
-  listener->setInterval(5);
+  listener->setInterval(1);
   controller->add(listener);
+
 }
 
 
@@ -41,7 +41,6 @@ void Exode::listen(){
 
   while ( Serial.available()>0 ){
     byte b= Serial.read();
-
     if(inst_len == 0){ inst_len = b; _INPUT = (byte*)malloc(inst_len); }
     else{
       _INPUT[cursor_input] = b;

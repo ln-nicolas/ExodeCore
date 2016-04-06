@@ -10,10 +10,8 @@
 
   Exode use a specific protocol, see the link below.
 
-  // instructions
-
   Created by Lenselle Nicolas, december, 2015
-  // licence
+  APACHE License 2.0
 
 */
 
@@ -23,8 +21,8 @@
 #include <ThreadController.h>
 #include "ExodeThread.h"
 #include "instructions.h"
-
 #include "Servo.h"
+
 
 #define NB_PIN 20
 #define DEBUG 0
@@ -41,12 +39,12 @@ class Exode{
 
 protected:
 
-  byte inst_len;
+
+  byte inst_len; // incomming instruction's length (byte array)
 	int  cursor_input;
-  byte *_INPUT;
+  byte *_INPUT; // byte array to hold the current instruction
 
-
-  void execute();
+  void execute(); // execute the incomming instruction
 
   // Multithread
   ThreadController* controller;
@@ -59,7 +57,7 @@ public:
 
   Exode();
 
-  void listen();
+  void listen(); // listen the serial port
   void sendUnsignedInt(byte key, int value);
 
   void run();
@@ -72,13 +70,11 @@ public:
   void writePPM(int id, int us);
   void removePPM(int id);
 
-
-
 };
 
 #endif
 
-extern Exode _exode;
+extern Exode _exode; // unique Exode's instance
 void callback_listen();
 
 // Global Board Values

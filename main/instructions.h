@@ -16,7 +16,5 @@
   #include <WProgram.h>
 #endif
 
-
 // Instructions's array
-
 extern void (*_FUNCTIONS[])(byte o[]);

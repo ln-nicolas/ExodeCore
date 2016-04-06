@@ -1,9 +1,6 @@
 #include "instructions.h"
 #include "Exode.h"
 
-// Watchdog to reset
-#include <avr/wdt.h>
-
 // o <-> operande
 
 void _pinMode(byte o[]){
@@ -78,7 +75,7 @@ void _pulse(byte o[]){
   delayMicroseconds(us);
   digitalWrite(pin,LOW);
 
-  
+
 }
 
 void _pulseIn(byte o[]){
@@ -88,22 +85,22 @@ void _pulseIn(byte o[]){
   int duration = pulseIn(pin, HIGH);
 
   _exode.sendUnsignedInt(key, duration);
-  
+
 }
 
 void _executeThread(byte o[]){
 
   int block_len = o[1];
-  
+
   int inst_len = 0;
   byte *inst;
   int  inst_cursor = 0;
 
-  
+
   for( int i= 1; i <= block_len; i++){
 
     byte b = o[i+1];
-    
+
     if(inst_len == 0){ inst_len = b; inst = (byte*)malloc(inst_len); }
     else{
       inst[inst_cursor] = b;
@@ -117,11 +114,11 @@ void _executeThread(byte o[]){
       foo(inst);
       free(inst);
     }
-   
+
   }
- 
+
 }
-  
+
 void _initThread(byte o[]){
 
   int key = o[1];
@@ -134,9 +131,9 @@ void _initThread(byte o[]){
   _exode.addThread(ex_th);
   _exode.sendUnsignedInt(key, ex_th->getId());
 
-  // i don't why, but i've to copy the op here, else it doesn't work 
+  // i don't why, but i've to copy the op here, else it doesn't work
   for(int i= 0; i <= len; i++) op[1+i] = o[6+i];
-  
+
 }
 
 void _deleteThread(byte o[]){
@@ -144,14 +141,19 @@ void _deleteThread(byte o[]){
   _exode.deleteThread(ID);
 }
 
-void _resetBoard(byte o[]){
-  wdt_enable(WDTO_15MS);
-  while(1);
+void _reset(byte o[]){
+  //not defined yet
+}
+
+void _checkExode(byte o[]){
+  // Call this function to check if Exode is installed
+  // on the board (autosearch board)
+  _exode.sendUnsignedInt(202, 404);
 }
 
 void (*_FUNCTIONS[])(byte o[]) = {
   &_pinMode,          // 0
-  
+
   &_digitalWrite,     // 1
   &_digitalRead,      // 2
   &_digitalSwitch,    // 3
@@ -165,11 +167,11 @@ void (*_FUNCTIONS[])(byte o[]) = {
 
   &_pulse,            // 9
   &_pulseIn,          // 10
-  
+
   &_executeThread,   // 11
   &_initThread,      // 12
   &_deleteThread,    // 13
 
-  &_resetBoard       // 14
+  &_reset,           // 14
+  &_checkExode       // 15
 };
-
