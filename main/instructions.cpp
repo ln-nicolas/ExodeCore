@@ -4,9 +4,8 @@
 // o <-> operande
 
 void _pinMode(byte o[]){
-  //int pin = o[1];
-  //int mode = o[2];
-
+  //if is an analogic pin
+  if(o[3]==1) o[1]= analogInputToDigitalPin(o[1]);
   _pinMod[o[1]] = o[2];
   pinMode(o[1],o[2]);
 }
@@ -36,15 +35,11 @@ void _digitalSwitch(byte o[]){
 }
 
 void _analogWrite(byte o[]){
-  int pin = o[1];
-  int value = o[2];
-  analogWrite(pin, value);
+  analogWrite(o[1], o[2]);
 }
 
 void _analogRead(byte o[]){
-  int pin = o[1];
-  int key = o[2];
-  _exode.sendUnsignedInt(key, analogRead(pin));
+  _exode.sendUnsignedInt(o[2], analogRead(analogInputToDigitalPin(o[1])));
 }
 
 
@@ -155,7 +150,7 @@ void (*_FUNCTIONS[])(byte o[]) = {
   &_pinMode,          // 0
 
   &_digitalWrite,     // 1
-  &_digitalRead,      // 2
+  &_digitalRead,      // 3
   &_digitalSwitch,    // 3
 
   &_analogWrite,      // 4

@@ -23,8 +23,6 @@
 #include "instructions.h"
 #include "Servo.h"
 
-
-#define NB_PIN 20
 #define DEBUG 0
 
 #define MAX_PPM 8
@@ -78,6 +76,8 @@ extern Exode _exode; // unique Exode's instance
 void callback_listen();
 
 // Global Board Values
-extern int _pinMod[NB_PIN];
-extern int _digLvl[NB_PIN];
-extern double _anaVal[NB_PIN];
+extern int _pinMod[];
+extern int _digLvl[];
+extern double _anaVal[];
+
+

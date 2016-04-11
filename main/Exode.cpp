@@ -4,9 +4,9 @@
 Exode _exode = Exode();
 
 // Global board's values
-int _pinMod[NB_PIN];
-int _digLvl[NB_PIN];
-double _anaVal[NB_PIN];
+int _pinMod[NUM_DIGITAL_PINS+NUM_ANALOG_INPUTS];
+int _digLvl[NUM_DIGITAL_PINS+NUM_ANALOG_INPUTS];
+double _anaVal[NUM_DIGITAL_PINS+NUM_ANALOG_INPUTS];
 
 // Callbacking function for multithreading
 void callback_listen(){  _exode.listen(); }
