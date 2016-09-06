@@ -5,7 +5,10 @@
   See here : https://github.com/ivanseidel/ArduinoThread
 
   ExodeThread is adapted for Exode, callback function
-  use a byte array to stock the operandes
+  use a byte array to hold the operandes
+
+  Created by Lenselle Nicolas, december, 2015
+  APACHE License 2.0
 */
 
 #ifndef ExodeThread_h

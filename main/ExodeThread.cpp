@@ -3,12 +3,7 @@
 
 ExodeThread::ExodeThread(byte o[], void (*callback)(byte o[]), unsigned long _interval):Thread(){
 
-  // We copy the operandes
-  //int nb_op = sizeof(o)/sizeof(byte);
-
   op = o;
-  //for(int i=0; i < nb_op; i++) op[i] = o[i];
-
 
   onRun(callback);
 
