@@ -1,7 +1,5 @@
 #include "Exode.h"
 #include "instructions/exode_set.h"
-#include "instructions/adaServoShield_set.h"
-#include "instructions/lib/AccelStepper.h"
 
 void setup() {
   _exode.setup();
