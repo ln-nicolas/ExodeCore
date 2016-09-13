@@ -1,5 +1,5 @@
-#include "Exode.h"
-#include "instructions/exode_set.h"
+#include <Exode.h>
+#include <exode_set.h>
 
 void setup() {
   _exode.setup();

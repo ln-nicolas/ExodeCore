@@ -14,7 +14,7 @@
 #ifndef ExodeThread_h
 #define ExodeThread_h
 
-#include <Thread.h>
+#include "Thread.h"
 
 #if defined(ARDUINO) && ARDUINO >= 100
   #include <Arduino.h>

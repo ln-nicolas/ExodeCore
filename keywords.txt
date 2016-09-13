@@ -1,0 +1,4 @@
+_exode KEYWORD1
+run    KEYWORD2
+setup  KEYWORD2
+load_exode_instructions KEYWORD2

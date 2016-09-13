@@ -19,9 +19,9 @@
 #ifndef Exode_h
 #define Exode_h
 
-#include <ThreadController.h>
-#include "ExodeThread.h"
-#include "instructions/instructionSet.h"
+#include "utility/ThreadController.h"
+#include "utility/ExodeThread.h"
+#include "instructionSet.h"
 
 #if defined(ARDUINO) && ARDUINO >= 100
   #include <Arduino.h>
@@ -58,7 +58,7 @@ public:
 
   void addThread(ExodeThread *th);
   void addThread(Thread *th);
-  
+
   void deleteThread(ExodeThread *th);
   void deleteThread(int id);
 

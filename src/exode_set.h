@@ -5,12 +5,13 @@
   APACHE License 2.0
 */
 #include "instructionSet.h"
+#include "utility/Thread.h"
 
 #include "Servo.h"
 #define  MAX_SERVO 12
 Servo* servo[MAX_SERVO];
 
-#include "lib/AccelStepper.h"
+#include "utility/AccelStepper.h"
 #define MAX_STEPPER 12
 AccelStepper* stepper[MAX_STEPPER];
 
