@@ -1,7 +1,6 @@
 #include "Exode.h"
 
 Exode _exode= Exode();
-
 void callback_listen(){  _exode.listen(); }
 
 Exode::Exode(){
