@@ -4,7 +4,7 @@
   Created by Lenselle Nicolas, december, 2015
   APACHE License 2.0
 */
-#include "instructionSet.h"
+#include "InstructionSet.h"
 #include "utility/Thread.h"
 
 #include "Servo.h"

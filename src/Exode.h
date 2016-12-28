@@ -21,7 +21,7 @@
 
 #include "utility/ThreadController.h"
 #include "utility/ExodeThread.h"
-#include "instructionSet.h"
+#include "InstructionSet.h"
 
 #if defined(ARDUINO) && ARDUINO >= 100
   #include <Arduino.h>
