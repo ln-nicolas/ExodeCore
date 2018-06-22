@@ -46,6 +46,8 @@ AccelStepper* stepper[MAX_STEPPER];
 #define SPDSTEP   17
 #define MOVSTEP   18
 
+#define SLEEP     19
+
 /*
  * DEFINITIONS
  */
@@ -305,9 +307,13 @@ void _moveStepper(byte o[]){
   stepper[o[1]]->moveTo(relative);
 }
 
-
-
-
+void _sleep(byte o[]){
+  /*
+    o[1-4]: sleep time (us)
+  */
+  long ms = *((unsigned long*)(o+1));
+  delay(ms);
+}
 
 /*
  *  CONTROLLER
@@ -318,8 +324,6 @@ void _moveStepper(byte o[]){
    if (stepper[id] != NULL)
    stepper[id]->run();
  }
-
-
 
 
 
@@ -350,6 +354,7 @@ void load_exode_instructions(char id){
   exode_inst->set(ACCSTEP,   &_setStepperAcceleration);
   exode_inst->set(SPDSTEP,   &_setStepperSpeed);
   exode_inst->set(MOVSTEP,   &_moveStepper);
+  exode_inst->set(SLEEP,     &_sleep);
 
   _exode.addInstructionSet(id, exode_inst);
 
