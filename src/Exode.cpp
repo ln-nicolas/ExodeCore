@@ -32,9 +32,19 @@ void Exode::listen(){
    * number of bytes.
    */
 
-  while ( Serial.available()>0 ){
+  while ( Serial.available() > 0 ){
     byte b= Serial.read();
-    if(len_input == 0){ len_input = b; _INPUT = (byte*)malloc(len_input); }
+
+    if(len_input == 0){ 
+
+      len_input_pointer[0] = b;
+      len_input_pointer[1] = Serial.read();
+      len_input_pointer[2] = Serial.read();
+      len_input_pointer[3] = Serial.read();
+      len_input = *((long*)(len_input_pointer));
+
+      _INPUT = (byte*)malloc(len_input); 
+    }
     else{
       _INPUT[cursor_input] = b;
       cursor_input++;

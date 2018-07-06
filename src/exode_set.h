@@ -198,17 +198,19 @@ void _executeThread(byte o[]){
    o[1]: bytecode len
   */
 
-  int stop_bit = o[1]+1;
+  int stop_bit = *((unsigned long*)(o+1)) + 1;
+  _exode.sendUnsignedInt(0, stop_bit);
 
   // place cursor on the first instruction
-  for( int cursor= 2; cursor <= stop_bit;){
+  for( int cursor= 5; cursor <= stop_bit;){
 
-    //cursor+1 the position of the function's id
+    // cursor+1 the position of the function's id
     _exode.execute(o+(cursor+1));
 
-    //update the cursor position
-    //      curentPos + block lenght + 1
-    cursor= cursor+o[cursor]+1;
+    // update the cursor position
+    // curentPos + block lenght + 1
+    int block_len = *((unsigned long*)(o[cursor]));
+    cursor= cursor+block_len+1;
   }
 
 }

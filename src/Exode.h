@@ -33,8 +33,10 @@ class Exode{
 
 protected:
 
-  byte len_input; // incomming instruction's length (byte array)
-	int  cursor_input;
+  long len_input; // incomming instruction's length (byte array)
+  long *len_input_pointer; 
+
+	int cursor_input;
   byte *_INPUT; // byte array to hold the current instruction
 
   // Multithread
