@@ -43,6 +43,8 @@ void Exode::listen(){
       len_input_pointer[3] = Serial.read();
       len_input = *((unsigned long*)(len_input_pointer));
 
+      this->sendUnsignedInt(42, len_input);
+
       _INPUT = (byte*)malloc(len_input); 
     }
     else{
