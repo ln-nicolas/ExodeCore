@@ -41,7 +41,7 @@ void Exode::listen(){
       len_input_pointer[1] = Serial.read();
       len_input_pointer[2] = Serial.read();
       len_input_pointer[3] = Serial.read();
-      len_input = *((long*)(len_input_pointer));
+      len_input = *((unsigned long*)(len_input_pointer));
 
       _INPUT = (byte*)malloc(len_input); 
     }
